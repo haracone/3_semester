@@ -1,0 +1,31 @@
+#ifndef UNTITLED1_PRINT_TUPLE_H
+#define UNTITLED1_PRINT_TUPLE_H
+
+#include <tuple>
+#include <iostream>
+
+template <class Ch, class Tr, class...  Args, int index>
+struct for_each {
+    void printT (std::basic_ostream <Ch, Tr> &os, std::tuple <Args...> const &t) {
+        for_each <Ch, Tr, Args..., index - 1> pElement;
+        pElement.printT(os, t);
+        os << std::get<index>(t);
+    }
+ };
+
+template <class Ch, class Tr, class...  Args>
+struct for_each <Ch, Tr, Args..., -1> {
+    void printT (std::basic_ostream <Ch, Tr> &os, std::tuple <Args...> const &t) {
+        return;
+    }
+};
+
+template<class Ch, class Tr, class...  Args>
+std::basic_ostream <Ch, Tr> &operator << (std::basic_ostream <Ch, Tr> &os, std::tuple <Args...> const &t) {
+    int const size = sizeof...(Args);
+    for_each <Ch, Tr, Args..., size> T;
+    T.printT(os, t);
+    return os;
+}
+
+#endif //UNTITLED1_PRINT_TUPLE_H
