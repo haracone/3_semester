@@ -1,11 +1,13 @@
-#ifndef INTRO_MODULE2_H
-#define INTRO_MODULE2_H
+#ifndef INTRO_B_MODULE2_H
+#define INTRO_B_MODULE2_H
 
 #include <string>
+#include <fstream>
 
-namespace Module2
-{
-    std::string getMyName();
-}
+class Module2 {
+public:
+    std::string getw(std::ifstream &ifs);
+    bool check(std::ifstream &ifs);
+};
 
-#endif //INTRO_MODULE2_H
+#endif
