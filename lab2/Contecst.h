@@ -27,6 +27,14 @@ public:
         stack.pop();
         return number;
     }
+
+    bool find (std::string str) {
+        return map.find(str) != map.end();
+    }
+
+    double take (std::string str) {
+        return map[str];
+    }
 };
 
 
