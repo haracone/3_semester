@@ -10,23 +10,25 @@
 
 class Parser {
 public:
-    std::string getc(std::ifstream &ifs) {
+    std::string getc(std::istream &ifs) {
         std::string str;
         char c = ifs.get();
         if (c == '#') {
             getline(ifs, str);
-            return nullptr;
+            return "";
         }
+        str.insert(str.end(), c);
         while ((c = ifs.get()) && (c != EOF) && c != ' ') {
             str.insert(str.end(), c);
         }
         return str;
     }
 
-    std::string geta(std::ifstream &ifs) {
+    std::string geta(std::istream &ifs) {
         std::string str;
         char c = ifs.get();
-        if  (isdigit(c) || isalpha(c) && ((c != EOF) && c != ' '))
+        str.insert(str.end(), c);
+        if  (isdigit(c) || isalpha(c) && ((c != EOF) && c != ' ') && c != '\n')
             str.insert(str.end(), c);
         return str;
     }
