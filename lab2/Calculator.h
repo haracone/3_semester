@@ -15,7 +15,6 @@
 class Calculator {
 public:
     void run(std::istream &fin) {
-        Factory coolfactory;
         Parser coolparser;
         Contects coolcontecst;
         std::string str1, str2;
@@ -23,7 +22,7 @@ public:
             str1 = coolparser.getc(fin);
             str2 = coolparser.geta(fin);
             if (!str1.empty()) {
-                Commands *curentcommand  = coolfactory.Fact(str1);
+                Commands *curentcommand  = Factory::getIns()->Fact(str1);
                 curentcommand->run(&coolcontecst, str2);
                 delete(curentcommand);
             }
