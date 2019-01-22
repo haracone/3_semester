@@ -7,12 +7,24 @@
 #include <map>
 
 class Factory {
-    static std::map <std::string, CMD_Ctreate*> map;
+    std::map <std::string, CMD_Ctreate*> map;
+    Factory() = default;
 public:
+    Factory(const Factory &a) = delete;
     Commands *Fact(std::string str) {
         return map[str] -> create();
     }
+
+    void SetMap (std::string str, CMD_Ctreate *com) {
+        map[str] = com;
+    }
+
+    static Factory* getIns() {
+        static Factory a;
+        return &a;
+    }
 };
+
 
 
 
