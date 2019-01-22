@@ -4,6 +4,29 @@
 
 #include "Factory.h"
 namespace {
-DEFINE_Create DEFINE; PUSH_Create PUSH; POP_Create POP; ADD_Create ADD; MINUS_Create MINUS; MULTIPLY_Create MULTIPLY; DIVIDE_Create DIVIDE; SQRT_Create SQRT; PRINT_Create PRINT;
-auto Factory::map = {{"DEFINE", &DEFINE}, {"PUSH", &PUSH}, {"POP", &POP}, {"ADD", &ADD}, {"MINUS", &MINUS}, {"MULTIPLY", &MULTIPLY}, {"DIVIDE", &DIVIDE}, {"SQRT", &SQRT}, {"PRINT", &PRINT}};
+bool func() {
+
+    CMD_Ctreate* DEFINE = new DEFINE_Create;
+    CMD_Ctreate* PUSH = new DEFINE_Create;
+    CMD_Ctreate* POP = new DEFINE_Create;
+    CMD_Ctreate* ADD = new DEFINE_Create;
+    CMD_Ctreate* MINUS = new DEFINE_Create;
+    CMD_Ctreate* MULTIPLY = new DEFINE_Create;
+    CMD_Ctreate* DIVIDE = new DEFINE_Create;
+    CMD_Ctreate* SQRT = new DEFINE_Create;
+    CMD_Ctreate* PRINT = new DEFINE_Create;
+    Factory::getIns() ->SetMap("DEFINE", DEFINE);
+    Factory::getIns() ->SetMap("PUSH", PUSH);
+    Factory::getIns() ->SetMap("POP", POP);
+    Factory::getIns() ->SetMap("+", ADD);
+    Factory::getIns() ->SetMap("-", MINUS);
+    Factory::getIns() ->SetMap("*", MULTIPLY);
+    Factory::getIns() ->SetMap("/", DIVIDE);
+    Factory::getIns() ->SetMap("SQRT", SQRT);
+    Factory::getIns() ->SetMap("PRINT", PRINT);
+    return true;
 }
+
+    bool a = func();
+}
+
